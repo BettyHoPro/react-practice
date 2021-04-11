@@ -25,12 +25,18 @@ function App() {
   const [showCard, setShowCard] = useState(true)
 
   const toggleShowCard = () => setShowCard(!showCard)
+  const deleteCardHandler = (cardIndex) => {
+    const cards_copy = [...cards]
+    cards_copy.splice(cardIndex, 1)
+    setCards(cards_copy)
+  }
   const cardsMarkup = showCard &&
     (
-      cards.map(card => <Card 
+      cards.map((card, index) => <Card 
         avatar={card.avatar}
         name={card.name}
         title={card.title}
+        onDelete={() => deleteCardHandler(index)}
       />)
     )
    

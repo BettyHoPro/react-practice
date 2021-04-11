@@ -11,7 +11,7 @@ const card = props => {
           <h4><b>{props.name}</b></h4> 
           <p>{props.title}</p> 
          
-          <p><button className="button button-red" >Delete</button></p>
+          <p><button className="button button-red" onClick={props.onDelete} >Delete</button></p>
           <div>{props.children}</div> 
         </div>
       </div>
