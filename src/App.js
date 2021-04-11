@@ -15,10 +15,11 @@ function App() {
   )
   const changeNameHandler = (name) => setName(name)
   const changeInputHandler = event => setName(event.target.value)
-
+  const toggleShowCard = () => setShowCard(!showCard)
   return (
     <div className="App">
-      <button className="button" onClick={() => changeNameHandler("Kitty Yen")}> Toggle show/hide</button>
+      <button className="button" onClick={toggleShowCard}> Toggle show/hide</button>
+      {showCard &&
      <Card 
         avatar="https://cdn.fakercloud.com/avatars/antonyzotov_128.jpg"
         name={name}
@@ -26,7 +27,7 @@ function App() {
         onChangeName={() => changeNameHandler("betty Ho")}
         onChangeInput={changeInputHandler}
       >{btnsMarkup}
-      </Card>
+      </Card>}
       
     </div>
   
