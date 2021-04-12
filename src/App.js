@@ -35,6 +35,13 @@ function App() {
     console.log("copay cards",cards_copy)
     setCards(cards_copy)
   }
+  const changeNameHandler = (event,id) => {
+     const cardIndex = cards.findIndex(card => card.id == id)
+     const cards_copy = [...cards]
+     cards_copy[cardIndex].name = event.target.value
+     setCards(cards_copy)
+    }
+
   const cardsMarkup = showCard &&
     (
       cards.map((card, index) => <Card 
@@ -43,6 +50,7 @@ function App() {
         title={card.title}
         key={card.id}
         onDelete={() => deleteCardHandler(index)}
+        onChangeName = {(event) => changeNameHandler(event, card.id) }
       />)
     )
    
