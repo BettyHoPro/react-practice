@@ -4,9 +4,10 @@ import './App.css';
 import Card from "./Card"
 import styled from "styled-components"
 const Button = styled.button`
-background-color: #4CAF50; /* Green */
+background-color: ${props => props.length>2 ? "#4CAF50" : props.length<2? "red": "pink"};
   border: none;
-  color: white;
+  color: ${props => props.length <=1 ? 'black' : 'white'};
+  font-weight: ${props => props.length <= 1 ? 'bold':'normal'};
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
