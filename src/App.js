@@ -2,7 +2,19 @@
 import React, { useState } from "react"
 import './App.css';
 import Card from "./Card"
-import faker from "faker"
+import styled from "styled-components"
+const Button = styled.button`
+background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+`
 
 function App() {
   const [cards, setCards] = useState([
@@ -42,11 +54,9 @@ function App() {
      setCards(cards_copy)
     }
 
-  const buttonStyle = {
-    backgroundColor: null
-  }
-  if (cards.length < 3) buttonStyle.backgroundColor = 'lightpink';
-  if (cards.length < 2) buttonStyle.backgroundColor = 'red';
+  const classes = ['button']
+  if (cards.length < 3) classes.push("pink")
+  if (cards.length < 2) classes.push('red text')
 
   const cardsMarkup = showCard &&
     (
@@ -63,7 +73,8 @@ function App() {
 
   return (
     <div className="App">
-      <button className="button" style={buttonStyle} onClick={toggleShowCard}> Toggle show/hide</button>
+      <Button length={cards.length}>Toggle</Button>
+      <button className={classes.join(' ')} onClick={toggleShowCard}> Toggle show/hide</button>
       {cardsMarkup}
     </div>
   
