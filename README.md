@@ -1,6 +1,6 @@
 
-# Learning from
-https://www.udemy.com/course/complete-react-course-w-hooks-react-router-redux-usecontext/learn/lecture/18958246#content
+# About this project
+This project is built for learning purpose!
 
 # Getting Started with Create React App
 
