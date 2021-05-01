@@ -2,11 +2,19 @@
 import React, { useState } from "react"
 import './App.css';
 import Card from "./Card"
-import styled from "styled-components"
+import styled, { ThemeProvider, css } from "styled-components"
+const theme = {
+  primary: "#4CAF50",
+  mango: "yellow" 
+}
 const Button = styled.button`
-background-color: ${props => props.length>2 ? "#4CAF50" : props.length<2? "red": "pink"};
+  
   border: none;
-  color: ${props => props.length <=1 ? 'black' : 'white'};
+  
+  ${props => props.color && css`
+  background-color: ${props => props.length>2 ? props.theme[props.color] : props.length<2? "red": "pink"};
+  color: ${props => props.length <=1 ? 'white' : 'black'};
+  ` }
   font-weight: ${props => props.length <= 1 ? 'bold':'normal'};
   padding: 15px 32px;
   text-align: center;
@@ -73,12 +81,13 @@ function App() {
    
 
   return (
+    <ThemeProvider theme={ theme}>
     <div className="App">
-      <Button length={cards.length}>Toggle</Button>
+      <Button color= "mango" length={cards.length}>Toggle</Button>
       <button className={classes.join(' ')} onClick={toggleShowCard}> Toggle show/hide</button>
       {cardsMarkup}
     </div>
-  
+    </ThemeProvider>
   )
 }
 
