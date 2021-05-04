@@ -3,7 +3,20 @@ import "./App.css";
 
 
 class card extends Component {
+  static getDerivedStateFromProps(props, state) {
+    console.log('Card js getDerivedStateFromProps');
+    return state
+  }
 
+  shouldComponentUpdate(nextProps, nextState){
+    console.log("card js shouldComponentUpdate");
+    return true; 
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState){
+    console.log("Card js getSnapshotBeforeUpdate");
+    return { message: "some snapshot" }
+  }
   render(){
     console.log("Card");
     return (
