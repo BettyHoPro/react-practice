@@ -1,38 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import axios from "axios";
 import Card from './Card';
 import { ThemeProvider } from 'styled-components'
 import Button from './element/Button'
+
 const theme = {
   primary: '#4CAF50',
   mango: 'yellow'
 }
 
 function App() {
-  useEffect(() => {
-    alert('App js useEffect');
-  }, [])
-  const [cards, setCards] = useState([
-    {
-      id: 'asdfsafsdf',
-      name: 'Damaris Schuster',
-      title: 'International Operations Producer',
-      avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/karthipanraj/128.jpg'
-    },
-    {
-      id: 'gfhdfhg',
-      name: 'Bartholome Dietrich',
-      title: 'Future Security Developer',
-      avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/cicerobr/128.jpg'
-    },
-    {
-      id: 'tbdfghfghf',
-      name: 'Pattie Miller',
-      title: 'Forward Metrics AnalystChange Name',
-      avatar: 'https://s3.amazonaws.com/uifaces/faces/twitter/illyzoren/128.jpg'
-    }
-  ])
+  const [cards, setCards] = useState([])
   const [showCard, setShowCard] = useState(true)
+
+  //fetch the data
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/users')
+    .then(res => {
+      console.log(res.data)
+      setCards(res.data)
+    })
+  }, [])
 
   const toggleShowCard = () => setShowCard(!showCard)
   const deleteCardHandler = (cardIndex) => {
@@ -63,7 +52,7 @@ function App() {
     cards.map((card, index) => <Card
       avatar={card.avatar}
       name={card.name}
-      title={card.title}
+      phone={card.phone}
       key={card.id}
       onDelete={() => deleteCardHandler(index)}
       onChangeName={(event) => changeNameHandler(event, card.id)}
