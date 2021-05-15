@@ -5,6 +5,7 @@ import Card from './Card';
 import { ThemeProvider } from 'styled-components'
 import ComponentA from './components/ComponentA'
 export const NameContext = React.createContext()
+export const ColorContext = React.createContext()
 
 const theme = {
   primary: '#4CAF50',
@@ -40,7 +41,9 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
       <NameContext.Provider value={'Smith'}>
-        <ComponentA /> 
+        <ColorContext.Provider value={'red'}>
+          <ComponentA /> 
+        </ColorContext.Provider>
       </NameContext.Provider>
       <input type="text" value={id} onChange={ e => setId(e.target.value)} />
       <Card
