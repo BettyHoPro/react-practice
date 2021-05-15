@@ -3,6 +3,8 @@ import './App.css';
 import axios from "axios";
 import Card from './Card';
 import { ThemeProvider } from 'styled-components'
+import ComponentA from './components/ComponentA'
+export const NameContext = React.createContext()
 
 const theme = {
   primary: '#4CAF50',
@@ -34,8 +36,12 @@ function App() {
   }
 
   return (
+    
     <ThemeProvider theme={theme}>
       <div className="App">
+      <NameContext.Provider value={'Smith'}>
+        <ComponentA /> 
+      </NameContext.Provider>
       <input type="text" value={id} onChange={ e => setId(e.target.value)} />
       <Card
       avatar={card.avatar}

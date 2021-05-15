@@ -4,6 +4,7 @@ const ComponentB = () => {
     return (
         <div>
             <div>ComponentB</div>
+            <ComponentC />
         </div>
     )
 }
