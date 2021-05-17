@@ -4,6 +4,7 @@ import axios from "axios";
 import Card from './Card';
 import { ThemeProvider } from 'styled-components'
 import ComponentA from './components/ComponentA'
+import Counter from './components/Counter'
 export const NameContext = React.createContext()
 export const ColorContext = React.createContext()
 
@@ -40,6 +41,7 @@ function App() {
     
     <ThemeProvider theme={theme}>
       <div className="App">
+        <Counter />
       <NameContext.Provider value={'Smith'}>
         <ColorContext.Provider value={'red'}>
           <ComponentA /> 
